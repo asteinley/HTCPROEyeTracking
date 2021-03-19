@@ -8,26 +8,29 @@ using System.Diagnostics;
 
 public class GetCoords : MonoBehaviour
 {
-	private GameObject obj;
+	public GameObject obj;
 	private string coords = "";
 	Stopwatch sw = new Stopwatch();
 	private string full_path;
+	public string path;
 	
 	private void Awake()
 	{
-		//create file for output
+		//create filename for output
 		DateTime now = DateTime.Now;
 		string strDate = now.ToString("O");
 		string filename = "example_test" + ".txt";
+		
 		//create file address -- documents folder for now
-		string path = "C:/Users/HFVRl/Documents/Eye Data/";
+		//string path = "C:/Users/HFVRl/Documents/Eye Data/";
 		full_path = path + filename;
 		File.Create(full_path).Dispose();
+		
 		string title = "Eye Tracking Data for Subject: " + strDate + "\r\n";
 		File.WriteAllText(full_path, title);
+		
 		//start stopwatch
 		sw.Start();
-		obj = GameObject.Find("tracking_sphere");
 	}
 	
 	// Start is called before the first frame update
